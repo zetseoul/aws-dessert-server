@@ -2,9 +2,13 @@ package com.dessert.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "preference")
 public class Preference {
 
     @Id
@@ -12,6 +16,7 @@ public class Preference {
     @Column(name = "preference_pk_id")
     private Integer preferencePkId;
 
+    @JdbcTypeCode(SqlTypes.CHAR)
     @Column(name = "my_level", nullable = false, length = 1)
     private String myLevel;
 
@@ -32,6 +37,23 @@ public class Preference {
     @JoinColumn(name = "users_pk_id", unique = true, nullable = false)
     private User user;
 
+
+    public String getMyLevel() { return myLevel; }
+    public String getMyHabit() { return myHabit; }
+    public String getMyFind() { return myFind; }
+
+    public static Preference forUser(User user) {
+        var preference = new Preference();
+        preference.user = user;
+        return preference;
+    }
+
+    public void complete(String level, String habit, String find) {
+        this.myLevel = level;
+        this.myHabit = habit;
+        this.myFind = find;
+        this.isResearch = true;
+    }
 
     protected Preference() {
 

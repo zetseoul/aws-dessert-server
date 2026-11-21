@@ -21,6 +21,10 @@ public class RecipeStep {
     @JoinColumn(name = "recipe_pk_id", nullable = false)
     private Recipe recipe;
 
+    public Integer getStepPkId() { return stepPkId; }
+    public Integer getStepNumber() { return stepNumber; }
+    public String getStep() { return step; }
+
     protected RecipeStep() {
     }
 }

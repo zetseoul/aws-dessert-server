@@ -66,6 +66,23 @@ public class Recipe {
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public Integer getRecipePkId() { return recipePkId; }
+    public String getRecipeImage() { return recipeImage; }
+    public Integer getScrapCount() { return scrapCount; }
+    public User getAuthor() { return author; }
+
+    public String getRecipeIntro() { return recipeIntro; }
+    public Integer getRecipeServings() { return recipeServings; }
+    public Short getBakingLevel() { return bakingLevel; }
+    public String getTags() { return tags; }
+    public String getIngredient1() { return ingredient1; }
+    public String getIngredient2() { return ingredient2; }
+    public String getTips() { return tips; }
+
     protected Recipe() {
 
     }
